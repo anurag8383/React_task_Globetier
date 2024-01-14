@@ -1,0 +1,51 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* .app {
+  margin: 10px 20px;
+  
+} */
+
+/* :root {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+
+.left, .right {
+  flex: 1;
+  height: 100%;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  /* fonts */
+  --font-roboto: Roboto;
+  --font-raleway: Raleway;
+
+  /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-base: 16px;
+  --font-size-xs: 12px;
+  --font-size-5xl: 24px;
+
+  /* Colors */
+  --black-20: #949494;
+  --color-gray-100: #7f7f7f;
+  --black-80: #121;
+  --color-black: #000;
+  --white: #f8f8f8;
+  --blue-1: #2f80ed;
+
+  /* Border radiuses */
+  --br-5xs: 8px;
+}
+
+.newslist{
+  margin: auto;
+}
