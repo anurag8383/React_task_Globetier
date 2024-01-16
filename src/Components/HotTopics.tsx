@@ -23,12 +23,14 @@ interface ApiResponse {
     articles: Article[];
 }
 
+
+
 const NewsCard: React.FC = () => {
     const [selectedNews, setSelectedNews] = useState<Article | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const apiKey = 'c377b6ef3ac44513b4b9f80c16626f74'; 
+            const apiKey = 'c377b6ef3ac44513b4b9f80c16626f74';
             const apiUrl = `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${apiKey}`;
 
             try {
@@ -48,26 +50,19 @@ const NewsCard: React.FC = () => {
     }, []);
 
     return (
-        
-        <div className="card-container">
-            
-            {selectedNews && (
+        <div className="containerTopics">
+            <div className="title">Hot Topics</div>
+            {selectedNews &&
                 <div className="card">
                     <div className="card-overlay">
-                        <h3>{selectedNews.title}</h3>
-                        {/* <p>{selectedNews.description}</p>
-                        <p>Author: {selectedNews.author}</p> */}
-                        <p>Published At: {selectedNews.publishedAt}</p>
-                        {/* <a href={selectedNews.url} target="_blank" rel="noopener noreferrer">
-                            Read More
-                        </a> */}
+                        <h3 className='head'>{selectedNews.title}</h3>
+                        <p className='para'>Published At: {selectedNews.publishedAt}</p>
                     </div>
                     {selectedNews.urlToImage && <img src={selectedNews.urlToImage} alt={selectedNews.title} />}
-                        {/* <CardsNews/> */}
                 </div>
-            )}
+            }
         </div>
-       
+
     );
 };
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './MultipleNews.css';
+import "./index.css"
 
 const NewsList: React.FC = () => {
     const [news, setNews] = useState<any[]>([]);
@@ -56,39 +57,39 @@ const NewsList: React.FC = () => {
     }, [loading]);
 
     return (
-        <h1 className='Latest'>Latest News
-            <div>
-
-                {news.map((article, index) => {
-                    if (index === news.length - 1) {
-                        return (
-                            <div key={article.title} ref={lastNewsElementRef} className="news-card">
-                                <img src={article.urlToImage} alt={article.title} />
-                                <div className="news-details">
-                                    {/* <h2>{article.title}</h2> */}
-                                    {/* <p>{new Date(article.publishedAt).toLocaleString()}</p> */}
+        <>
+            <h1 className='Latest'>Latest News</h1>
+            <div className="showData">
+                {React.Children.toArray(
+                    news.map((article, index) => {
+                        if (index === news.length - 1) {
+                            return (
+                                <div ref={lastNewsElementRef} className="news-card">
+                                    <img src={article.urlToImage} alt={article.title} />
+                                    <div className="news-details">
+                                        {/* <h2>{article.title}</h2> */}
+                                        {/* <p>{new Date(article.publishedAt).toLocaleString()}</p> */}
+                                    </div>
+                                    <p>{article.name}</p>
+                                    <p>{new Date(article.publishedAt).toLocaleString()}</p>
                                 </div>
-                                <p>{article.name}</p>
-                                <p>{new Date(article.publishedAt).toLocaleString()}</p>
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <div key={article.title} className="news-card">
-                                <img src={article.urlToImage} alt={article.title} />
-                                <div className="news-details">
-                                    {/* <h2>{article.title}</h2> */}
-
+                            );
+                        } else {
+                            return (
+                                <div key={article.title} className="news-card">
+                                    <img src={article.urlToImage} alt={article.title} />
+                                    <div className="news-details">
+                                        <h2 className='titles'>{article.title}</h2>
+                                        <p className='dates'>{new Date(article.publishedAt).toLocaleString()}</p>
+                                    </div>
                                 </div>
-                                <p>{article.name}</p>
-                                <p>{new Date(article.publishedAt).toLocaleString()}</p>
-                            </div>
-                        );
-                    }
-                })}
+                            );
+                        }
+                    })
+                )}
                 {loading && <p>Loading...</p>}
             </div>
-        </h1>
+        </>
     );
 };
 
